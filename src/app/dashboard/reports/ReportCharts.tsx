@@ -152,7 +152,7 @@ export default function ReportCharts({ stats, session, initialRegion = 'all', in
                     paddingAngle={6}
                     dataKey="value"
                     stroke="none"
-                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                    label={({ name, percent }) => `${name} ${((percent || 0) * 100).toFixed(0)}%`}
                     labelLine={{ stroke: '#cbd5e1', strokeWidth: 1 }}
                   >
                     {statusData.map((entry: any, index: number) => (

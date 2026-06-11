@@ -104,7 +104,7 @@ export default function UserEditAreaModal({ user, onClose, areas }: { user: any,
               }}
             >
               <option value="">-- เลือกเขตสุขภาพ --</option>
-              {regions.map(r => <option key={r} value={r}>{r}</option>)}
+              {regions.map((r: string) => <option key={r} value={r}>{r}</option>)}
             </select>
           </div>
 
@@ -127,7 +127,7 @@ export default function UserEditAreaModal({ user, onClose, areas }: { user: any,
               }}
             >
               <option value="">-- เลือกจังหวัด --</option>
-              {provinces.map(p => <option key={p} value={p}>{p}</option>)}
+              {provinces.map((p: string) => <option key={p} value={p}>{p}</option>)}
             </select>
           </div>
           
@@ -146,7 +146,7 @@ export default function UserEditAreaModal({ user, onClose, areas }: { user: any,
                   }}
                 >
                   <option value="">-- เลือกอำเภอ --</option>
-                  {districts.map(d => <option key={d} value={d}>{d}</option>)}
+                  {districts.map((d: string) => <option key={d} value={d}>{d}</option>)}
                 </select>
               </div>
               
