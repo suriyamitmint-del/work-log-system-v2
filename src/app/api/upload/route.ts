@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { writeFile, mkdir } from "fs/promises";
 import { join } from "path";
+// @ts-ignore
 import { v4 as uuidv4 } from "uuid";
 import fs from "fs";
 
