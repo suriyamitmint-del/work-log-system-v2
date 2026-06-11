@@ -1,0 +1,175 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Roles: ADMIN, OSP, RH_ST, SSJ, SBS
+// CarePlanStatus: PENDING, APPROVED, REJECTED
+// VisitStatus: DRAFT, SUBMITTED_TO_RH_ST, APPROVED_BY_RH_ST, APPROVED_BY_SSJ
+
+model User {
+  id             String    @id @default(cuid())
+  username       String    @unique
+  passwordHash   String
+  name           String
+  role           String
+  areaId         String?   // Reference to Area
+  area           Area?     @relation(fields: [areaId], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  // Relations
+  createdCarePlans CarePlan[] @relation("CreatedBy")
+  approvedCarePlans CarePlan[] @relation("ApprovedBy")
+  assignedCarePlans CarePlan[] @relation("AssignedTo")
+  homeVisits        HomeVisit[]
+
+  approvedVisitsRHST HomeVisit[] @relation("HomeVisitRHSTApprover")
+  approvedVisitsSSO  HomeVisit[] @relation("HomeVisitSSOApprover")
+  approvedVisitsSSJ  HomeVisit[] @relation("HomeVisitSSJApprover")
+}
+
+model Area {
+  id          String   @id @default(cuid())
+  province    String
+  district    String
+  subDistrict String
+  zipCode     String?  // รหัสไปรษณีย์
+  village     String?
+  users       User[]
+  patients    Patient[]
+}
+
+model Patient {
+  id             String    @id @default(cuid())
+  hn             String?
+  cid            String    @unique // เลขบัตรประชาชน
+  prefix         String?   // คำนำหน้า
+  name           String
+  dob            DateTime
+  gender         String
+  insurance      String?   // สิทธิการรักษา
+  address        String
+  phone          String?
+  lineId         String?   // LINE ID
+  caregiverName  String?
+  caregiverPhone String?
+  caregiverRelation String? // ความสัมพันธ์กับผู้ดูแล
+  distanceFromHospital Float? // ระยะทางจาก รพ.สต. (km)
+  gpsLat         String?
+  gpsLng         String?
+
+  areaId         String?
+  area           Area?     @relation(fields: [areaId], references: [id])
+
+  // Groups
+  isGroup1A      Boolean   @default(false) // ผู้มีภาวะพึ่งพิง
+  isGroup1B      Boolean   @default(false) // Palliative
+  isGroup2       Boolean   @default(false) // NCDs
+  isGroup3       Boolean   @default(false) // แม่และเด็ก
+  isGroup4       Boolean   @default(false) // จิตเวช
+
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  carePlans      CarePlan[]
+  homeVisits     HomeVisit[]
+}
+
+model CarePlan {
+  id           String    @id @default(cuid())
+  patientId    String
+  patient      Patient   @relation(fields: [patientId], references: [id])
+  createdById  String
+  createdBy    User      @relation("CreatedBy", fields: [createdById], references: [id])
+  approvedById String?
+  approvedBy   User?     @relation("ApprovedBy", fields: [approvedById], references: [id])
+  assignedToId String
+  assignedTo   User      @relation("AssignedTo", fields: [assignedToId], references: [id])
+  
+  status       String @default("PENDING")
+  goals        String?
+  activityPlan String?
+  approvedAt   DateTime?
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  homeVisits   HomeVisit[]
+}
+
+model HomeVisit {
+  id           String    @id @default(cuid())
+  patientId    String
+  patient      Patient   @relation(fields: [patientId], references: [id])
+  createdById  String
+  createdBy    User      @relation(fields: [createdById], references: [id])
+  carePlanId   String?
+  carePlan     CarePlan? @relation(fields: [carePlanId], references: [id])
+  visitDate    DateTime  @default(now())
+
+  targetGroup  String?    // Which group this visit focuses on
+
+  // GPS & Image
+  gpsLat       String?
+  gpsLng       String?
+  imageUrl     String?
+
+  // Vitals
+  bloodPressure String?
+  bloodSugar    Float?
+  weight        Float?
+  height        Float?
+  temperature   Float?
+  pulse         Int?
+
+  // Assessment Scores
+  adlScore     Int?
+  adlGroup     String?   // BED, HOME, SOCIAL
+  q2Score      Int?
+  q9Score      Int?
+  st5Score     Int?
+  
+  notes        String?
+  activityResults String? // JSON string containing dynamic checklist and form results
+  status       String @default("DRAFT")
+
+  // Approvers
+  rhstApproverId String?
+  rhstApprover   User?     @relation("HomeVisitRHSTApprover", fields: [rhstApproverId], references: [id])
+  rhstApprovedAt DateTime?
+
+  ssoApproverId String?
+  ssoApprover   User?     @relation("HomeVisitSSOApprover", fields: [ssoApproverId], references: [id])
+  ssoApprovedAt DateTime?
+
+  ssjApproverId String?
+  ssjApprover   User?     @relation("HomeVisitSSJApprover", fields: [ssjApproverId], references: [id])
+  ssjApprovedAt DateTime?
+  
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model RegistrationRequest {
+  id             String    @id @default(cuid())
+  username       String    @unique
+  passwordHash   String
+  name           String
+  role           String
+  
+  region         String?
+  province       String?
+  district       String?
+  subDistrict    String?
+  zipCode        String?
+
+  status         String    @default("PENDING") // PENDING, APPROVED, REJECTED
+  
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
