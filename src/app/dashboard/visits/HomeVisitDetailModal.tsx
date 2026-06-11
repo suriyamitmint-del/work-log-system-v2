@@ -48,8 +48,8 @@ export default function HomeVisitDetailModal({ visit, onClose }: { visit: any, o
   };
 
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, overflowY: 'auto', padding: '20px' }}>
-      <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '8px', width: '100%', maxWidth: '600px', color: 'black', maxHeight: '90vh', overflowY: 'auto' }}>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] p-4 overflow-y-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-[600px] text-black max-h-[90vh] overflow-y-auto">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
           <h3 style={{ fontSize: '18px', fontWeight: 'bold' }}>รายละเอียดการเยี่ยมบ้าน</h3>
           <button onClick={onClose} style={{ fontSize: '20px', cursor: 'pointer', background: 'none', border: 'none' }}>&times;</button>
@@ -89,7 +89,7 @@ export default function HomeVisitDetailModal({ visit, onClose }: { visit: any, o
         )}
 
         <h4 style={{ fontWeight: 'bold', marginBottom: '10px', borderBottom: '1px solid #eee', paddingBottom: '5px' }}>ข้อมูลสุขภาพพื้นฐาน (Vitals)</h4>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '20px' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
           <div><span style={{ color: '#6b7280' }}>ความดันโลหิต (BP):</span> {visit.bloodPressure || '-'}</div>
           <div><span style={{ color: '#6b7280' }}>น้ำตาลในเลือด:</span> {visit.bloodSugar ? `${visit.bloodSugar} mg/dL` : '-'}</div>
           <div><span style={{ color: '#6b7280' }}>น้ำหนัก:</span> {visit.weight ? `${visit.weight} กก.` : '-'}</div>
@@ -123,7 +123,7 @@ export default function HomeVisitDetailModal({ visit, onClose }: { visit: any, o
         {(visit.q2Score !== null || visit.q9Score !== null || visit.st5Score !== null) && (
           <>
             <h4 style={{ fontWeight: 'bold', marginBottom: '10px', borderBottom: '1px solid #eee', paddingBottom: '5px' }}>ประเมินสุขภาพจิต (กลุ่ม 4)</h4>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '20px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
               <div><span style={{ color: '#6b7280' }}>คะแนน 2Q:</span> {visit.q2Score !== null ? visit.q2Score : '-'}</div>
               <div><span style={{ color: '#6b7280' }}>คะแนน 9Q:</span> {visit.q9Score !== null ? visit.q9Score : '-'}</div>
               <div><span style={{ color: '#6b7280' }}>คะแนน ST-5:</span> {visit.st5Score !== null ? visit.st5Score : '-'}</div>

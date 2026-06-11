@@ -81,8 +81,8 @@ export default function UserEditAreaModal({ user, onClose, areas }: { user: any,
   };
 
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '20px' }}>
-      <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '8px', width: '100%', maxWidth: '500px', color: 'black' }}>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] p-4 overflow-y-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-[500px] text-black max-h-[90vh] overflow-y-auto">
         <h3 style={{ fontSize: '18px', marginBottom: '16px', fontWeight: 'bold' }}>
           แก้ไขพื้นที่รับผิดชอบของ {user.name} ({user.role})
         </h3>

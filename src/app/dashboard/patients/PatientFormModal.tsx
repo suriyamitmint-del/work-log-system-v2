@@ -127,14 +127,14 @@ export default function PatientFormModal({ onClose, areas }: { onClose: () => vo
   };
 
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, overflowY: 'auto', padding: '20px' }}>
-      <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '8px', width: '100%', maxWidth: '800px', color: 'black', maxHeight: '90vh', overflowY: 'auto' }}>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] p-4 overflow-y-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-[800px] text-black max-h-[90vh] overflow-y-auto">
         <h3 style={{ fontSize: '20px', marginBottom: '16px', fontWeight: 'bold', borderBottom: '1px solid #eee', paddingBottom: '10px' }}>ลงทะเบียนผู้รับบริการใหม่ (CP-CNV-01)</h3>
         
         {error && <div style={{ color: 'red', marginBottom: '10px', padding: '10px', backgroundColor: '#fee2e2', borderRadius: '4px' }}>{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '20px' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
             {/* Section 1: CID & HN */}
             <div>
               <label style={{ display: 'block', marginBottom: '5px' }}>เลขบัตรประชาชน (CID) *</label>
@@ -224,7 +224,7 @@ export default function PatientFormModal({ onClose, areas }: { onClose: () => vo
             {/* Section 5: Caregiver */}
             <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #eee', paddingTop: '16px' }}>
               <h4 style={{ fontWeight: 'bold', marginBottom: '10px' }}>ข้อมูลผู้ดูแล (Primary Caregiver)</h4>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <label style={{ display: 'block', marginBottom: '5px' }}>ชื่อ-นามสกุลผู้ดูแล</label>
                   <input type="text" style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }} value={formData.caregiverName} onChange={(e) => setFormData({ ...formData, caregiverName: e.target.value })} />
@@ -243,7 +243,7 @@ export default function PatientFormModal({ onClose, areas }: { onClose: () => vo
             {/* Section 6: Area & Location */}
             <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #eee', paddingTop: '16px' }}>
               <h4 style={{ fontWeight: 'bold', marginBottom: '10px' }}>พื้นที่และพิกัด *</h4>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
                   <label style={{ display: 'block', marginBottom: '5px' }}>จังหวัด *</label>
                   <select required style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }} value={selectedProvince} onChange={(e) => { setSelectedProvince(e.target.value); setSelectedDistrict(""); setFormData(prev => ({ ...prev, areaId: "" })); }}>
@@ -272,7 +272,7 @@ export default function PatientFormModal({ onClose, areas }: { onClose: () => vo
                   <input type="number" step="0.1" style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }} value={formData.distanceFromHospital} onChange={(e) => setFormData({ ...formData, distanceFromHospital: e.target.value })} />
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: '10px', marginTop: '10px', alignItems: 'end' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3 sm:items-end">
                 <div>
                   <label style={{ display: 'block', marginBottom: '5px' }}>ละติจูด (Latitude)</label>
                   <input type="text" style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', backgroundColor: '#f9fafb' }} value={formData.gpsLat} onChange={(e) => setFormData({ ...formData, gpsLat: e.target.value })} placeholder="เช่น 13.7563" />
@@ -293,7 +293,7 @@ export default function PatientFormModal({ onClose, areas }: { onClose: () => vo
             {/* Section 7: Target Groups */}
             <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #eee', paddingTop: '16px', marginTop: '8px' }}>
               <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold', paddingBottom: '5px' }}>กลุ่มเป้าหมาย (เลือกได้มากกว่า 1)</label>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <label style={{ display: 'flex', alignItems: 'center' }}>
                   <input type="checkbox" checked={formData.isGroup1A} onChange={(e) => setFormData({...formData, isGroup1A: e.target.checked})} style={{ marginRight: '8px' }} />
                   <span>กลุ่ม 1A (ภาวะพึ่งพิง)</span>

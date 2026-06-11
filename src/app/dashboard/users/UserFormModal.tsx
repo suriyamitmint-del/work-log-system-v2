@@ -124,14 +124,14 @@ export default function UserFormModal({ onClose, areas, userToEdit }: { onClose:
   };
 
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, overflowY: 'auto', padding: '20px' }}>
-      <div style={{ backgroundColor: 'white', padding: '24px', borderRadius: '8px', width: '100%', maxWidth: '500px', color: 'black', maxHeight: '90vh', overflowY: 'auto' }}>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] p-4 overflow-y-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-[500px] text-black max-h-[90vh] overflow-y-auto">
         <h3 style={{ fontSize: '18px', marginBottom: '16px', fontWeight: 'bold' }}>{isEditing ? "แก้ไขข้อมูลผู้ใช้งาน" : "เพิ่มผู้ใช้งานใหม่"}</h3>
         
         {error && <div style={{ color: 'red', marginBottom: '10px', padding: '10px', backgroundColor: '#fee2e2', borderRadius: '4px' }}>{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <div style={{ gridColumn: '1 / -1' }}>
               <label style={{ display: 'block', marginBottom: '5px' }}>ชื่อ-นามสกุล *</label>
               <input

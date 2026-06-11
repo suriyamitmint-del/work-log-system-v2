@@ -35,7 +35,7 @@ export default function DashboardNavbar() {
           className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors shadow-sm hover:shadow"
         >
           <LogOut size={16} />
-          <span>ออกจากระบบ</span>
+          <span className="hidden sm:inline">ออกจากระบบ</span>
         </button>
       </div>
     </nav>

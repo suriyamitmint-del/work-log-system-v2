@@ -14,8 +14,8 @@ export default function DashboardPage() {
     <div className="w-full">
 
 
-      <main className="p-8 max-w-7xl mx-auto">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <main className="p-4 sm:p-8 max-w-7xl mx-auto">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">ยินดีต้อนรับสู่ระบบ</h2>
           {/* Dashboard menu grid will be here depending on role */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
