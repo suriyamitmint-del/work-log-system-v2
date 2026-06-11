@@ -1,10 +1,9 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap');
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Poppins", "Prompt", sans-serif;
+  --font-sans: 'Poppins', 'Prompt', sans-serif;
 }
 
 :root {
@@ -22,5 +21,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: 'Poppins', 'Prompt', sans-serif !important;
 }
