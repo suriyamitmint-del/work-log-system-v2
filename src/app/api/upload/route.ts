@@ -28,24 +28,32 @@ export async function POST(req: Request) {
     const role = user.role || "UNKNOWN";
     const username = user.username || user.id;
 
-    // สร้าง Path: public/uploads/[role]/[username]/
+    // === โค้ดสำหรับรันบนเซิร์ฟเวอร์จริง (VPS / Dedicated) ที่สามารถสร้างโฟลเดอร์ได้ ===
+    // ให้เปิดคอมเมนต์โค้ดส่วนนี้ และปิดคอมเมนต์ส่วน Base64 ด้านล่างเมื่อย้ายไปรันบนเซิร์ฟเวอร์จริง
+    /*
     const uploadDir = join(process.cwd(), "public", "uploads", role, username);
-    
-    // ตรวจสอบและสร้างโฟลเดอร์ถ้ายังไม่มี
     if (!fs.existsSync(uploadDir)) {
       await mkdir(uploadDir, { recursive: true });
     }
-
-    // สร้างชื่อไฟล์ด้วย UUID กันซ้ำ
     const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
     const filename = `${uuidv4()}.${ext}`;
     const filePath = join(uploadDir, filename);
-
-    // บันทึกไฟล์ลง Server
     await writeFile(filePath, buffer);
-
-    // URL สำหรับใช้แสดงผลในเว็บ
     const fileUrl = `/uploads/${role}/${username}/${filename}`;
+    */
+    // =========================================================================
+
+    // === โค้ดชั่วคราวสำหรับรันบน Vercel (ทดลองใช้) ===
+    // เนื่องจาก Vercel ไม่ยอมให้สร้างโฟลเดอร์ เราจึงแปลงรูปเป็น Base64 String แทน
+    const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
+    let mimeType = "image/jpeg";
+    if (ext === "png") mimeType = "image/png";
+    else if (ext === "gif") mimeType = "image/gif";
+    else if (ext === "webp") mimeType = "image/webp";
+
+    const base64String = buffer.toString("base64");
+    const fileUrl = `data:${mimeType};base64,${base64String}`;
+    // =========================================================================
 
     return NextResponse.json({ success: true, url: fileUrl });
   } catch (error: any) {
