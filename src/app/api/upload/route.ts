@@ -1,11 +1,7 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
-// @ts-ignore
 import { v4 as uuidv4 } from "uuid";
-import fs from "fs";
 
 export async function POST(req: Request) {
   try {
@@ -24,24 +20,16 @@ export async function POST(req: Request) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Create user specific folder: public/uploads/{userId}/
-    const userId = (session.user as any).id;
-    const uploadDir = join(process.cwd(), "public", "uploads", userId);
-    
-    if (!fs.existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true });
-    }
+    // Vercel serverless functions have a read-only filesystem (except /tmp).
+    // For a prototype, we will convert the image directly to a base64 Data URL.
+    const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
+    let mimeType = "image/jpeg";
+    if (ext === "png") mimeType = "image/png";
+    else if (ext === "gif") mimeType = "image/gif";
+    else if (ext === "webp") mimeType = "image/webp";
 
-    // Generate unique filename
-    const ext = file.name.split(".").pop() || "jpg";
-    const filename = `${uuidv4()}.${ext}`;
-    const filePath = join(uploadDir, filename);
-
-    // Write file
-    await writeFile(filePath, buffer);
-
-    // Return the public URL
-    const fileUrl = `/uploads/${userId}/${filename}`;
+    const base64String = buffer.toString("base64");
+    const fileUrl = `data:${mimeType};base64,${base64String}`;
 
     return NextResponse.json({ success: true, url: fileUrl });
   } catch (error: any) {
