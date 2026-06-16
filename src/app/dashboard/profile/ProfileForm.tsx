@@ -41,7 +41,7 @@ export default function ProfileForm({ initialName }: { initialName: string }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {message.text && (
-        <div className={`p-4 rounded-md ${message.type === 'error' ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
+        <div className={`p-4 rounded-xl ${message.type === 'error' ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
           {message.text}
         </div>
       )}
@@ -54,7 +54,7 @@ export default function ProfileForm({ initialName }: { initialName: string }) {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
+          className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
           required
         />
       </div>
@@ -72,7 +72,7 @@ export default function ProfileForm({ initialName }: { initialName: string }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="เว้นว่างไว้หากไม่ต้องการเปลี่ยนรหัสผ่าน"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
             />
           </div>
 
@@ -85,7 +85,7 @@ export default function ProfileForm({ initialName }: { initialName: string }) {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="กรอกรหัสผ่านใหม่อีกครั้ง"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-black"
             />
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function ProfileForm({ initialName }: { initialName: string }) {
         <button
           type="submit"
           disabled={loading}
-          className="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50"
+          className="px-6 py-2 bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50 rounded-full"
         >
           {loading ? "กำลังบันทึก..." : "บันทึกข้อมูล"}
         </button>

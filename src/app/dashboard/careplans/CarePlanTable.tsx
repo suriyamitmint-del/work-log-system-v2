@@ -29,7 +29,7 @@ export default function CarePlanTable({ carePlans, patients, osps, role }: { car
         <div className="mb-4 flex justify-end">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
           >
             <PlusCircle size={18} />
             จ่ายงาน / สร้างแผนการดูแล
@@ -37,7 +37,7 @@ export default function CarePlanTable({ carePlans, patients, osps, role }: { car
         </div>
       )}
 
-      <div className="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+      <div className="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 sm:rounded-xl">
         <table className="min-w-full divide-y divide-gray-300">
           <thead className="bg-gray-50">
             <tr>
@@ -67,11 +67,11 @@ export default function CarePlanTable({ carePlans, patients, osps, role }: { car
                   
                   {/* Show Target Groups */}
                   <div className="flex flex-wrap gap-1 mt-1">
-                    {cp.patient.isGroup1A && <span className="inline-flex items-center rounded-md bg-red-50 px-2 py-0.5 text-[10px] font-medium text-red-700 ring-1 ring-inset ring-red-600/10">1A: ภาวะพึ่งพิง</span>}
-                    {cp.patient.isGroup1B && <span className="inline-flex items-center rounded-md bg-orange-50 px-2 py-0.5 text-[10px] font-medium text-orange-700 ring-1 ring-inset ring-orange-600/10">1B: Palliative</span>}
-                    {cp.patient.isGroup2 && <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-0.5 text-[10px] font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">2: NCDs</span>}
-                    {cp.patient.isGroup3 && <span className="inline-flex items-center rounded-md bg-pink-50 px-2 py-0.5 text-[10px] font-medium text-pink-700 ring-1 ring-inset ring-pink-600/10">3: แม่และเด็ก</span>}
-                    {cp.patient.isGroup4 && <span className="inline-flex items-center rounded-md bg-purple-50 px-2 py-0.5 text-[10px] font-medium text-purple-700 ring-1 ring-inset ring-purple-600/10">4: จิตเวช</span>}
+                    {cp.patient.isGroup1A && <span className="inline-flex items-center rounded-xl bg-red-50 px-2 py-0.5 text-[10px] font-medium text-red-700 ring-1 ring-inset ring-red-600/10">1A: ภาวะพึ่งพิง</span>}
+                    {cp.patient.isGroup1B && <span className="inline-flex items-center rounded-xl bg-orange-50 px-2 py-0.5 text-[10px] font-medium text-orange-700 ring-1 ring-inset ring-orange-600/10">1B: Palliative</span>}
+                    {cp.patient.isGroup2 && <span className="inline-flex items-center rounded-xl bg-blue-50 px-2 py-0.5 text-[10px] font-medium text-blue-700 ring-1 ring-inset ring-blue-600/10">2: NCDs</span>}
+                    {cp.patient.isGroup3 && <span className="inline-flex items-center rounded-xl bg-pink-50 px-2 py-0.5 text-[10px] font-medium text-pink-700 ring-1 ring-inset ring-pink-600/10">3: แม่และเด็ก</span>}
+                    {cp.patient.isGroup4 && <span className="inline-flex items-center rounded-xl bg-purple-50 px-2 py-0.5 text-[10px] font-medium text-purple-700 ring-1 ring-inset ring-purple-600/10">4: จิตเวช</span>}
                   </div>
                   {role === "OSP" && cp.patient.gpsLat && cp.patient.gpsLng && (
                     <div className="mt-2">
@@ -91,7 +91,7 @@ export default function CarePlanTable({ carePlans, patients, osps, role }: { car
                   {cp.goals || "-"}
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${
+                  <span className={`inline-flex items-center rounded-xl px-2 py-1 text-xs font-medium ring-1 ring-inset ${
                     cp.status === 'PENDING' ? 'bg-yellow-50 text-yellow-800 ring-yellow-600/20' :
                     cp.status === 'APPROVED' ? 'bg-green-50 text-green-700 ring-green-600/20' :
                     'bg-red-50 text-red-700 ring-red-600/10'

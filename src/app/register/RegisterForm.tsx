@@ -116,7 +116,7 @@ export default function RegisterForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {error && <div className="p-3 bg-red-50 text-red-700 rounded-md text-sm">{error}</div>}
+      {error && <div className="p-3 bg-red-50 text-red-700 rounded-xl text-sm">{error}</div>}
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="sm:col-span-2">
@@ -124,7 +124,7 @@ export default function RegisterForm() {
           <input
             type="text"
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
@@ -135,7 +135,7 @@ export default function RegisterForm() {
           <input
             type="text"
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
             value={formData.username}
             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
           />
@@ -146,7 +146,7 @@ export default function RegisterForm() {
           <input
             type="password"
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
           />
@@ -155,7 +155,7 @@ export default function RegisterForm() {
         <div className="sm:col-span-2">
           <label className="block text-sm font-medium text-gray-700">สิทธิ์การใช้งาน (Role) *</label>
           <select
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 text-black"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 text-black"
             value={formData.role}
             onChange={(e) => {
               setFormData({ ...formData, role: e.target.value });
@@ -184,7 +184,7 @@ export default function RegisterForm() {
               <div className="sm:col-span-2">
                 <label className="block text-sm font-medium text-gray-700">เขตสุขภาพ</label>
                 <select
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black"
                   value={selectedRegion}
                   onChange={(e) => {
                     setSelectedRegion(e.target.value);
@@ -203,7 +203,7 @@ export default function RegisterForm() {
                 <label className="block text-sm font-medium text-gray-700">จังหวัด</label>
                 <select
                   disabled={!selectedRegion && provinces.length === 0}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black disabled:bg-gray-100"
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black disabled:bg-gray-100"
                   value={selectedProvince}
                   onChange={(e) => {
                     const prov = e.target.value;
@@ -227,7 +227,7 @@ export default function RegisterForm() {
                   <label className="block text-sm font-medium text-gray-700">อำเภอ</label>
                   <select
                     disabled={!selectedProvince}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black disabled:bg-gray-100"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black disabled:bg-gray-100"
                     value={selectedDistrict}
                     onChange={(e) => {
                       setSelectedDistrict(e.target.value);
@@ -246,7 +246,7 @@ export default function RegisterForm() {
                   <label className="block text-sm font-medium text-gray-700">ตำบล (รหัสไปรษณีย์)</label>
                   <select
                     disabled={!selectedDistrict}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black disabled:bg-gray-100"
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black disabled:bg-gray-100"
                     value={selectedSubDistrict}
                     onChange={(e) => {
                       const subD = e.target.value;
@@ -278,7 +278,7 @@ export default function RegisterForm() {
         <button
           type="submit"
           disabled={loading}
-          className="flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+          className="flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 rounded-full"
         >
           {loading ? "กำลังส่งข้อมูล..." : "ลงทะเบียน"}
         </button>

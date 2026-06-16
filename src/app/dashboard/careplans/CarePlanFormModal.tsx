@@ -73,7 +73,7 @@ export default function CarePlanFormModal({ onClose, patients, osps }: { onClose
   };
 
   const renderModule = (title: string, moduleItems: any[], bgColor: string, textColor: string) => (
-    <div className={`mb-4 p-3 rounded-lg ${bgColor} border`} style={{ borderColor: 'rgba(0,0,0,0.1)' }}>
+    <div className={`mb-4 p-3 rounded-xl ${bgColor} border`} style={{ borderColor: 'rgba(0,0,0,0.1)' }}>
       <h4 className={`font-semibold mb-2 ${textColor}`}>{title}</h4>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         {moduleItems.map(item => (
@@ -93,7 +93,7 @@ export default function CarePlanFormModal({ onClose, patients, osps }: { onClose
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[1000] overflow-y-auto p-4 sm:p-6">
-      <div className="bg-white p-6 rounded-lg w-full max-w-3xl text-black shadow-xl my-8">
+      <div className="bg-white p-6 rounded-2xl w-full max-w-3xl text-black shadow-xl my-8">
         <h3 className="text-xl font-bold mb-4">จ่ายงาน (สร้างแผนการดูแล)</h3>
         
         {error && <div className="text-red-500 mb-4 text-sm bg-red-50 p-2 rounded">{error}</div>}
@@ -144,7 +144,7 @@ export default function CarePlanFormModal({ onClose, patients, osps }: { onClose
           
           <div>
             <label className="block mb-2 text-sm font-medium">แผนกิจกรรม (Activity Plan)</label>
-            <div className="max-h-96 overflow-y-auto border border-gray-200 rounded-md p-3 bg-gray-50">
+            <div className="max-h-96 overflow-y-auto border border-gray-200 rounded-xl p-3 bg-gray-50">
               {selectedPatient ? (
                 <>
                   <p className="text-xs text-gray-500 mb-3">* ระบบเลือกกิจกรรมแนะนำตามกลุ่มเป้าหมายให้เป็นค่าเริ่มต้น สามารถปรับเปลี่ยนได้</p>
@@ -170,10 +170,10 @@ export default function CarePlanFormModal({ onClose, patients, osps }: { onClose
           </div>
 
           <div className="flex justify-end gap-3 pt-4 border-t">
-            <button type="button" onClick={onClose} className="px-4 py-2 border rounded text-gray-700 hover:bg-gray-50 font-medium transition-colors">
+            <button type="button" onClick={onClose} className="px-4 py-2 border rounded-xl text-gray-700 hover:bg-gray-50 font-medium transition-colors rounded-full">
               ยกเลิก
             </button>
-            <button type="submit" disabled={loading || patients.length === 0 || osps.length === 0} className="px-4 py-2 bg-blue-600 text-white rounded font-medium hover:bg-blue-700 disabled:opacity-50 transition-colors">
+            <button type="submit" disabled={loading || patients.length === 0 || osps.length === 0} className="px-4 py-2 bg-blue-600 text-white rounded font-medium hover:bg-blue-700 disabled:opacity-50 transition-colors rounded-full">
               {loading ? "กำลังบันทึก..." : "สร้างแผนและจ่ายงาน"}
             </button>
           </div>

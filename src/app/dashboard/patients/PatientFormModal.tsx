@@ -128,7 +128,7 @@ export default function PatientFormModal({ onClose, areas }: { onClose: () => vo
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] p-4 overflow-y-auto">
-      <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-[800px] text-black max-h-[90vh] overflow-y-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-2xl w-full max-w-[800px] text-black max-h-[90vh] overflow-y-auto">
         <h3 style={{ fontSize: '20px', marginBottom: '16px', fontWeight: 'bold', borderBottom: '1px solid #eee', paddingBottom: '10px' }}>ลงทะเบียนผู้รับบริการใหม่ (CP-CNV-01)</h3>
         
         {error && <div style={{ color: 'red', marginBottom: '10px', padding: '10px', backgroundColor: '#fee2e2', borderRadius: '4px' }}>{error}</div>}

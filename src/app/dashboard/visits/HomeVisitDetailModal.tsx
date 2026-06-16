@@ -49,7 +49,7 @@ export default function HomeVisitDetailModal({ visit, onClose }: { visit: any, o
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] p-4 overflow-y-auto">
-      <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-[600px] text-black max-h-[90vh] overflow-y-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-2xl w-full max-w-[600px] text-black max-h-[90vh] overflow-y-auto">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
           <h3 style={{ fontSize: '18px', fontWeight: 'bold' }}>รายละเอียดการเยี่ยมบ้าน</h3>
           <button onClick={onClose} style={{ fontSize: '20px', cursor: 'pointer', background: 'none', border: 'none' }}>&times;</button>

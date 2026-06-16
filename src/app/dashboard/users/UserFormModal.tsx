@@ -125,7 +125,7 @@ export default function UserFormModal({ onClose, areas, userToEdit }: { onClose:
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1000] p-4 overflow-y-auto">
-      <div className="bg-white p-4 sm:p-6 rounded-lg w-full max-w-[500px] text-black max-h-[90vh] overflow-y-auto">
+      <div className="bg-white p-4 sm:p-6 rounded-2xl w-full max-w-[500px] text-black max-h-[90vh] overflow-y-auto">
         <h3 style={{ fontSize: '18px', marginBottom: '16px', fontWeight: 'bold' }}>{isEditing ? "แก้ไขข้อมูลผู้ใช้งาน" : "เพิ่มผู้ใช้งานใหม่"}</h3>
         
         {error && <div style={{ color: 'red', marginBottom: '10px', padding: '10px', backgroundColor: '#fee2e2', borderRadius: '4px' }}>{error}</div>}

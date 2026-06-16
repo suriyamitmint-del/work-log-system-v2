@@ -111,7 +111,7 @@ export default function VisitTable({ visits, role }: { visits: any[], role: stri
                 setFilterArea("all"); 
                 setSelectedVisitIds([]); 
               }}
-              className="block rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
+              className="block rounded-xl border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
             >
               <option value="all">ทั้งหมด (ทุกเขตสุขภาพ)</option>
               {uniqueRegions.map(region => (
@@ -124,7 +124,7 @@ export default function VisitTable({ visits, role }: { visits: any[], role: stri
             <select
               value={filterArea}
               onChange={(e) => { setFilterArea(e.target.value); setSelectedVisitIds([]); }}
-              className="block rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
+              className="block rounded-xl border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
             >
               <option value="all">ทั้งหมด ({role === "SSO" ? "ทุกตำบล" : role === "SSJ" ? "ทุกอำเภอ" : "ทุกจังหวัด"})</option>
               {availableProvinces.map(area => (
@@ -138,14 +138,14 @@ export default function VisitTable({ visits, role }: { visits: any[], role: stri
               <button
                 onClick={() => handleBulkAction(role === "SSO" ? "APPROVED_BY_SSO" : "APPROVED_BY_SSJ")}
                 disabled={isProcessing === "bulk"}
-                className="inline-flex items-center gap-x-1.5 rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 disabled:opacity-50"
+                className="inline-flex items-center gap-x-1.5 rounded-xl bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 disabled:opacity-50"
               >
                 <CheckCircle size={16} /> อนุมัติ ({selectedVisitIds.length})
               </button>
               <button
                 onClick={() => handleBulkAction(role === "SSO" ? "SUBMITTED_TO_RH_ST" : "APPROVED_BY_RH_ST")}
                 disabled={isProcessing === "bulk"}
-                className="inline-flex items-center gap-x-1.5 rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 disabled:opacity-50"
+                className="inline-flex items-center gap-x-1.5 rounded-xl bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 disabled:opacity-50"
               >
                 <XCircle size={16} /> ส่งกลับ ({selectedVisitIds.length})
               </button>
@@ -156,7 +156,7 @@ export default function VisitTable({ visits, role }: { visits: any[], role: stri
         {role === "OSP" && (
           <Link
             href="/dashboard/visits/new"
-            className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+            className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
           >
             <PlusCircle size={18} />
             บันทึกเยี่ยมบ้าน
@@ -164,7 +164,7 @@ export default function VisitTable({ visits, role }: { visits: any[], role: stri
         )}
       </div>
 
-      <div className="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+      <div className="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 sm:rounded-xl">
         <table className="min-w-full divide-y divide-gray-300">
           <thead className="bg-gray-50">
             <tr>

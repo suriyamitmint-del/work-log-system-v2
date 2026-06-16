@@ -12,7 +12,7 @@ export default function DashboardNavbar() {
       <div className="flex items-center gap-6">
         <Link 
           href="/dashboard" 
-          className="flex items-center gap-2 text-indigo-600 hover:text-indigo-800 transition-colors font-medium bg-indigo-50 hover:bg-indigo-100 px-3 py-2 rounded-lg"
+          className="flex items-center gap-2 text-indigo-600 hover:text-indigo-800 transition-colors font-medium bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full"
         >
           <Home size={18} />
           <span>หน้าแรก</span>
@@ -32,7 +32,7 @@ export default function DashboardNavbar() {
         </Link>
         <button
           onClick={() => signOut({ callbackUrl: "/login" })}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors shadow-sm hover:shadow"
+          className="flex items-center gap-2 px-5 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-full transition-colors shadow-sm hover:shadow"
         >
           <LogOut size={16} />
           <span className="hidden sm:inline">ออกจากระบบ</span>

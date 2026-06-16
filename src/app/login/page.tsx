@@ -33,14 +33,14 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full mx-4 p-6 sm:p-8 bg-white rounded-xl shadow-lg border border-gray-100">
+      <div className="max-w-md w-full mx-4 p-6 sm:p-8 bg-white rounded-2xl shadow-lg border border-gray-100">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-gray-900">ระบบบันทึกข้อมูลการดูแลกลุ่มเป้าหมาย</h1>
           <p className="text-sm text-gray-500 mt-2">กรุณาเข้าสู่ระบบเพื่อดำเนินการต่อ</p>
         </div>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100">
+          <div className="mb-4 p-3 bg-red-50 text-red-600 text-sm rounded-xl border border-red-100">
             {error}
           </div>
         )}
@@ -51,7 +51,7 @@ export default function LoginPage() {
             <input
               type="text"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter your username"
@@ -63,7 +63,7 @@ export default function LoginPage() {
             <input
               type="password"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-black"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
@@ -73,7 +73,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors disabled:opacity-50"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 transition-colors disabled:opacity-50 rounded-full"
           >
             {loading ? "กำลังเข้าสู่ระบบ..." : "เข้าสู่ระบบ"}
           </button>

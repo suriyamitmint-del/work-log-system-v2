@@ -25,14 +25,14 @@ export default function PendingRequestsTable({ requests }: { requests: any[] }) 
 
   if (requests.length === 0) {
     return (
-      <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center text-gray-500">
+      <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center text-gray-500">
         ไม่มีคำขอลงทะเบียนที่รอการอนุมัติ
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+    <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-xl">
       <table className="min-w-full divide-y divide-gray-300">
         <thead className="bg-gray-50">
           <tr>
@@ -64,7 +64,7 @@ export default function PendingRequestsTable({ requests }: { requests: any[] }) 
                 <div className="text-gray-500">{req.username}</div>
               </td>
               <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${
+                <span className={`inline-flex items-center rounded-xl px-2 py-1 text-xs font-medium ring-1 ring-inset ${
                   req.role === 'ADMIN' ? 'bg-red-50 text-red-700 ring-red-600/10' :
                   req.role === 'OSP' ? 'bg-green-50 text-green-700 ring-green-600/10' :
                   req.role === 'RH_ST' ? 'bg-blue-50 text-blue-700 ring-blue-600/10' :

@@ -23,7 +23,7 @@ export default function UserTable({ users, areas }: { users: any[], areas: any[]
 
   return (
     <div>
-      <div className="mb-4 flex justify-between items-center bg-white p-4 rounded-lg shadow-sm border border-gray-100">
+      <div className="mb-4 flex justify-between items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
         <div className="flex items-center gap-3">
           <label htmlFor="role-filter" className="text-sm font-medium text-gray-700">
             กรองตามสิทธิ์:
@@ -32,7 +32,7 @@ export default function UserTable({ users, areas }: { users: any[], areas: any[]
             id="role-filter"
             value={filterRole}
             onChange={(e) => setFilterRole(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
+            className="border border-gray-300 rounded-xl px-3 py-1.5 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-black"
           >
             <option value="ALL">ทั้งหมด (All Roles)</option>
             <option value="OSP">อาสาพยาบาลชุมชน (OSP)</option>
@@ -45,14 +45,14 @@ export default function UserTable({ users, areas }: { users: any[], areas: any[]
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors"
         >
           <PlusCircle size={18} />
           เพิ่มผู้ใช้งาน
         </button>
       </div>
 
-      <div className="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+      <div className="overflow-x-auto shadow ring-1 ring-black ring-opacity-5 sm:rounded-xl">
         <table className="min-w-full divide-y divide-gray-300">
           <thead className="bg-gray-50">
             <tr>
@@ -81,7 +81,7 @@ export default function UserTable({ users, areas }: { users: any[], areas: any[]
                 </td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{user.username}</td>
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                  <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${
+                  <span className={`inline-flex items-center rounded-xl px-2 py-1 text-xs font-medium ring-1 ring-inset ${
                     user.role === 'ADMIN' ? 'bg-red-50 text-red-700 ring-red-600/10' :
                     user.role === 'OSP' ? 'bg-green-50 text-green-700 ring-green-600/10' :
                     user.role === 'RH_ST' ? 'bg-blue-50 text-blue-700 ring-blue-600/10' :

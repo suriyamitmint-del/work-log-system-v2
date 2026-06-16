@@ -59,7 +59,7 @@ export default function ReportCharts({ stats, session, initialRegion = 'all', in
                 params.set('province', 'all');
                 router.push(`/dashboard/reports?${params.toString()}`);
               }}
-              className="block rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
+              className="block rounded-xl border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
             >
               <option value="all">ทั้งหมด (ทุกเขตสุขภาพ)</option>
               {Object.keys(HEALTH_REGIONS).map(r => (
@@ -76,7 +76,7 @@ export default function ReportCharts({ stats, session, initialRegion = 'all', in
                 params.set('province', newProv);
                 router.push(`/dashboard/reports?${params.toString()}`);
               }}
-              className="block rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
+              className="block rounded-xl border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-blue-600 sm:text-sm sm:leading-6"
             >
               <option value="all">ทั้งหมด (ทุกจังหวัด)</option>
               {(initialRegion === 'all' ? Object.values(HEALTH_REGIONS).flat() : getProvincesByHealthRegion(initialRegion)).sort().map(p => (

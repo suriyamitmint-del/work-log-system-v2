@@ -22,7 +22,7 @@ export default async function NewVisitPage() {
         </p>
       </div>
       
-      <div className="bg-white shadow rounded-lg p-6">
+      <div className="bg-white shadow rounded-xl p-6">
         <VisitForm activePlans={activePlans} />
       </div>
     </div>
