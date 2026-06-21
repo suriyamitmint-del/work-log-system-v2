@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { createVisit } from "../actions";
 import { useRouter } from "next/navigation";
+import imageCompression from "browser-image-compression";
 import { MODULE_A, MODULE_B, MODULE_C, MODULE_D, MODULE_COMMON } from "@/lib/constants";
 
 const ALL_ACTIVITIES = [...MODULE_A, ...MODULE_B, ...MODULE_C, ...MODULE_D, ...MODULE_COMMON];
@@ -67,11 +68,33 @@ export default function VisitForm({ activePlans }: { activePlans: any[] }) {
     );
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setImageFile(file);
-      setImagePreview(URL.createObjectURL(file));
+      let file = e.target.files[0];
+      
+      // Image compression options
+      const options = {
+        maxSizeMB: 2,          // Compress to under 2MB
+        maxWidthOrHeight: 1920,
+        useWebWorker: true
+      };
+
+      try {
+        const compressedFile = await imageCompression(file, options);
+        // Browser returns a Blob, we convert it back to a File object for consistency
+        const finalFile = new File([compressedFile], file.name, {
+          type: compressedFile.type,
+          lastModified: Date.now(),
+        });
+        
+        setImageFile(finalFile);
+        setImagePreview(URL.createObjectURL(finalFile));
+      } catch (error) {
+        console.error("Error compressing image:", error);
+        alert("ไม่สามารถบีบอัดรูปภาพได้ จะใช้รูปภาพต้นฉบับแทน");
+        setImageFile(file);
+        setImagePreview(URL.createObjectURL(file));
+      }
     }
   };
 
