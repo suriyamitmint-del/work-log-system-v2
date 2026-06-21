@@ -29,8 +29,6 @@ export async function POST(req: Request) {
     const username = user.username || user.id;
 
     // === โค้ดสำหรับรันบนเซิร์ฟเวอร์จริง (VPS / Dedicated) ที่สามารถสร้างโฟลเดอร์ได้ ===
-    // ให้เปิดคอมเมนต์โค้ดส่วนนี้ และปิดคอมเมนต์ส่วน Base64 ด้านล่างเมื่อย้ายไปรันบนเซิร์ฟเวอร์จริง
-    /*
     const uploadDir = join(process.cwd(), "public", "uploads", role, username);
     if (!fs.existsSync(uploadDir)) {
       await mkdir(uploadDir, { recursive: true });
@@ -40,11 +38,10 @@ export async function POST(req: Request) {
     const filePath = join(uploadDir, filename);
     await writeFile(filePath, buffer);
     const fileUrl = `/uploads/${role}/${username}/${filename}`;
-    */
     // =========================================================================
 
     // === โค้ดชั่วคราวสำหรับรันบน Vercel (ทดลองใช้) ===
-    // เนื่องจาก Vercel ไม่ยอมให้สร้างโฟลเดอร์ เราจึงแปลงรูปเป็น Base64 String แทน
+    /*
     const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
     let mimeType = "image/jpeg";
     if (ext === "png") mimeType = "image/png";
@@ -53,6 +50,7 @@ export async function POST(req: Request) {
 
     const base64String = buffer.toString("base64");
     const fileUrl = `data:${mimeType};base64,${base64String}`;
+    */
     // =========================================================================
 
     return NextResponse.json({ success: true, url: fileUrl });
